@@ -1,4 +1,5 @@
 import Task1.AmountOfTime;
+import Task2.FizzBuzz;
 
 public class Main {
     public static void main(String[] args) {
