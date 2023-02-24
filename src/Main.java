@@ -24,7 +24,7 @@ public class Main {
 
         System.out.println();
         FizzBuzz fizzBuzzes = new FizzBuzz();
-        ExecutorService exec = Executors.newFixedThreadPool(5);
+        ExecutorService exec = Executors.newFixedThreadPool(4);
         exec.submit(fizzBuzzes::number);
         exec.submit(fizzBuzzes::fizz);
         exec.submit(fizzBuzzes::buzz);
