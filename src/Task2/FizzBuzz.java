@@ -2,27 +2,11 @@ package Task2;
 
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.StringJoiner;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class FizzBuzz {
     private volatile int value = 1;
 
-    private final Queue<String> queue = new LinkedList<>();
-
-    public synchronized String print() {
-        StringJoiner joiner = new StringJoiner(", ");
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            System.out.println("Error while reading queue");
-        }
-        while (!queue.isEmpty())
-            joiner.add(queue.poll());
-
-        return joiner.toString();
-    }
+    public final Queue<String> queue = new LinkedList<>();
 
     public synchronized void number() {
         while (value <= 15) {
@@ -86,15 +70,5 @@ public class FizzBuzz {
                 }
             }
         }
-    }
-
-    public static void main(String[] args) {
-        FizzBuzz fizzBuzzes = new FizzBuzz();
-        ExecutorService exec = Executors.newFixedThreadPool(5);
-        exec.submit(fizzBuzzes::number);
-        exec.submit(fizzBuzzes::fizz);
-        exec.submit(fizzBuzzes::buzz);
-        exec.submit(fizzBuzzes::fizzbuzz);
-        exec.submit(fizzBuzzes::print);
     }
 }
